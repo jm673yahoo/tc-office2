@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ca.mydemo.tcoffice.dao.mapper.BizMapper">
+    <cache/>
+    <select id="loadAllBiz" resultType="Client">
+        select
+        biz.BUS_LEGAL_NAME as bizLegalName,
+        biz.BUS_NAME as bizName,
+        biz.BUS_ID as businessId,
+        biz.PHN_NO as firstPhoneNbr,
+        biz.NUM_OF_LOC as nbrOfLocation,
+        biz.AVG_MTH_AMT as bizAvgMthAmt,
+        biz.ACRT_AVG_MTH_AMT as bizAcrtAvgMthAmt,
+        biz.DEB_CRED_PCT as debCredPercent,
+        biz.TIM_IN_BUS_ID as timeInBizId,
+        biz.ADDR as bizAddress,
+        biz.CITY as bizCity,
+        biz.PROV_ID as bizProvinceId,
+        biz.PCODE as bizPostCode,
+        biz.ACTIVE as active,
+        biz.PROC_ID as promotCode,
+        biz.MER_ID as merchantId,
+        biz.NUM_OF_TML as terminalNbr,
+        biz.TIM_IN_BUS_UNDR_CRNT_OWNR_ID as ownerTimeInBizId,
+        biz.TIM_IN_BUS_CURN_ADDR_ID as timInBusCurnAddrId,
+        biz.SHP_ADDR as bizShipAddress,
+        biz.SHP_SUITE as bizSuite,
+        biz.SHP_CITY as shipCity,
+        biz.SHP_PROV_ID as shipProvinceId,
+        biz.BUS_FAX as bizFaxNbr,
+        biz.SCNDRY_MRCH_ID as secondMerchId,
+        biz.THRD_MRCH_ID as thirdMerchId,
+        biz.IS_LEAD as isLead,
+        biz.PTR_ID as partnerId,
+        biz.LEAD_SRC_ID as leadSrcId,
+        biz.CHNL_ID as channelId,
+        biz.MED_ID as medId,
+        biz.SF_LEAD_ID as saleForceLeadId,
+        biz.FL_SRV as flSrv,
+        biz.WM_SRV as wmSrv,
+        biz.CRTD_DATE as createdDate,
+        ACC_UUID as acctUUId,
+        biz.CUS_ID as customerId,
+        biz.IS_DUPLICATE as isDuplicated,
+        biz.IND_KEY as industryCode,
+        biz.SUB_IND_KEY as subIndustryCode,
+        biz.TIM_IN_BUS_KEY as timeInBizKey,
+        biz.PROV_KEY as bizProvinceCode,
+        biz.PROC_KEY as processorKey,
+        biz.SHP_PROV_KEY as shipProvinceKey,
+        biz.LEAD_SRC_KEY as leadSrcKey,
+        biz.CHNL_KEY as bizChannelKey,
+        biz.MED_KEY as bizMedKey,
+        biz.MAX_ELGBL_AMT as maxElgebalAmt,
+        biz.IS_BNKLNKD_FLAG as isBanked,
+        biz.SHP_PCODE as shipPostCode
+
+        FROM appv3_db.BUSINESS biz, appv3_db.APPLICATION_ACTIVITY act
+        WHERE
+        biz.ACTIVE=1
+        and DATE(biz.CRTD_DATE) >= DATE(NOW() - INTERVAL 3 MONTH)
+        and biz.BUS_ID =act.BUS_ID
+        and act.APP_VIEW_ID = 21
+        ORDER BY bizName
+    </select>
+
+
+    <select id="getClient" resultType="Client">
+        SELECT
+        BUS_LEGAL_NAME as bizLegalName,
+        BUS_NAME as bizName,
+        BUS_ID as businessId,
+        PHN_NO as firstPhoneNbr,
+        NUM_OF_LOC as nbrOfLocation,
+        AVG_MTH_AMT as bizAvgMthAmt,
+        ACRT_AVG_MTH_AMT as bizAcrtAvgMthAmt,
+        DEB_CRED_PCT as debCredPercent,
+        TIM_IN_BUS_ID as timeInBizId,
+        ADDR as bizAddress,
+        CITY as bizCity,
+        PROV_ID as bizProvinceId,
+        PCODE as bizPostCode,
+        ACTIVE as active,
+        PROC_ID as promotCode,
+        MER_ID as merchantId,
+        NUM_OF_TML as terminalNbr,
+        OPS_FLAG as opsFlag,
+        TIM_IN_BUS_UNDR_CRNT_OWNR_ID as ownerTimeInBizId,
+        TIM_IN_BUS_CURN_ADDR_ID as timInBusCurnAddrId,
+        SHP_ADDR as bizShipAddress,
+        SHP_SUITE as bizSuite,
+        SHP_CITY as shipCity,
+        SHP_PROV_ID as shipProvinceId,
+        BUS_FAX as bizFaxNbr,
+        SCNDRY_MRCH_ID as secondMerchId,
+        THRD_MRCH_ID as thirdMerchId,
+        IS_LEAD as isLead,
+        PTR_ID as partnerId,
+        LEAD_SRC_ID as leadSrcId,
+        CHNL_ID as channelId,
+        MED_ID as medId,
+        SF_LEAD_ID as saleForceLeadId,
+        FL_SRV as flSrv,
+        WM_SRV as wmSrv,
+        CRTD_DATE as createdDate,
+        ACC_UUID as acctUUId,
+        CUS_ID as customerId,
+        IS_DUPLICATE as isDuplicated,
+        IND_KEY as industryCode,
+        SUB_IND_KEY as subIndustryCode,
+        TIM_IN_BUS_KEY as timeInBizKey,
+        PROV_KEY as bizProvinceCode,
+        PROC_KEY as processorKey,
+        SHP_PROV_KEY as shipProvinceKey,
+        LEAD_SRC_KEY as leadSrcKey,
+        CHNL_KEY as bizChannelKey,
+        MED_KEY as bizMedKey,
+        MAX_ELGBL_AMT as maxElgebalAmt,
+        IS_BNKLNKD_FLAG as isBanked,
+        SHP_PCODE as shipPostCode
+
+        FROM appv3_db.BUSINESS
+        WHERE
+        BUS_ID = #{bizId}
+
+    </select>
+
+    <!-- Very Complex Result Map -->
+    <resultMap id="opportunityResultMap" type="Opportunity">
+        <id property="id" column="APP_ID"/>
+        <result property="applicationNbr" column="APP_NO"/>
+        <result property="bizId" column="BUS_ID"/>
+        <result property="createdDate" column="CRTD_DATE"/>
+
+        <association property="contact" javaType="Contact">
+            <id property="conId" column="CON_ID"/>
+            <result property="firstName" column="FST_NAME"/>
+            <result property="lastName" column="LAS_NAME"/>
+            <result property="address" column="ADDR"/>
+            <result property="email" column="EML_ADDR"/>
+            <result property="city" column="CITY"/>
+            <result property="bizTitle" column="BUS_TITLE"/>
+            <result property="companyName" column="CON_COM_NAME"/>
+            <result property="languageId" column="LAN_ID"/>
+            <result property="emailOptIn" column="EML_OPT_IN"/>
+            <result property="contactTypeKey" column="CON_TYP_KEY"/>
+            <result property="contactTypeId" column="CON_TYP_ID"/>
+            <result property="mobile" column="MOB_PHN_NO"/>
+            <result property="ownPercentage" column="OWN_PCT"/>
+            <result property="postCode" column="PCODE"/>
+            <result property="preferPhone" column="PRF_PHN_NO"/>
+            <result property="provinceKey" column="PROV_KEY"/>
+
+
+        </association>
+
+    </resultMap>
+    <select id="loadOpportunity" resultMap="opportunityResultMap">
+        SELECT
+        app.APP_ID,
+        app.APP_NO,
+        app.BUS_ID,
+        app.CRTD_DATE,
+        cont.FST_NAME,
+        cont.LAS_NAME,
+        cont.CON_ID,
+        cont.ADDR,
+        cont.EML_ADDR,
+        cont.CITY,
+        cont.BUS_TITLE,
+        cont.CON_COM_NAME,
+        cont.LAN_ID,
+        cont.EML_OPT_IN,
+        cont.CON_TYP_KEY,
+        cont.CON_TYP_ID,
+        cont.MOB_PHN_NO,
+        cont.NUM_OF_BUS,
+        cont.OWN_PCT,
+        cont.PCODE,
+        cont.PRF_PHN_NO,
+        cont.PROV_KEY
+
+        FROM appv3_db.APPLICATION app, appv3_db.CONTACT cont
+        WHERE
+        app.BUS_ID=#{bizId}
+        and cont.CON_ID = app.CON_ID
+
+
+    </select>
+
+</mapper>

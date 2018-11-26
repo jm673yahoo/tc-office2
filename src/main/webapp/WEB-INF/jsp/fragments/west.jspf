@@ -1,0 +1,78 @@
+<script>
+    var CLIENT_ID = '<c:out value="${accountUUId}"/>';
+
+    $(function () {
+
+        $('#side-menu').metisMenu();
+        $(window).bind("load resize", function () {
+            console.log($(this).width())
+            if ($(this).width() < 768) {
+                $('div.sidebar-collapse').addClass('collapse')
+            } else {
+                $('div.sidebar-collapse').removeClass('collapse')
+            }
+        });
+
+
+    });
+
+
+</script>
+<!-- contains the side menu items -->
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li>
+                <a href="javascript:handleSubMenu('../general/dashboard.htm')"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
+            </li>
+            <li>
+
+                <c:if test="${access.showSource}">
+                    <c:set var="menuItemCSS" value=""/>
+            <li id="tabSource">
+                <a href="#"><i class="fa fa-table fa-fw"></i><spring:message code='TAB_SOURCE'/><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li id='menuSummaryClient'>
+                        <a class="subMenuItem" onclick="handleTabSelect('tabSummary')"><spring:message
+                                code='SUB_MENU_SRC_SUMMARY'/></a>
+                    </li>
+                    <li id='menuLookupClient'>
+                        <a class="subMenuItem" onclick="handleTabSelect('tabLookup')"><spring:message
+                                code='SUB_MENU_SRC_LOOKUP'/></a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            </c:if>
+
+            <li id="tabSetting">
+                <a href="#"><i class="fa fa-gear fa-fw"></i></i><spring:message code='TAB_SETTINGS'/><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li id='menuUserGroup'>
+                        <a class="subMenuItem" onclick="handleTabSelect('tabUserGroup')"><spring:message
+                                code='SUB_MENU_USER_GROUP'/></a>
+                    </li>
+                    <li id='menuUserUsage'>
+                        <a class="subMenuItem" onclick="handleTabSelect('tabUserUsage')"><spring:message
+                                code='SUB_MENU_USER_USAGE'/></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-sitemap  fa-fw"></i>Switch App<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a class="subMenuItem" href="#">Blank Page</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+        </ul>
+        <!-- /#side-menu -->
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</nav>
+<!-- /.navbar-static-side -->

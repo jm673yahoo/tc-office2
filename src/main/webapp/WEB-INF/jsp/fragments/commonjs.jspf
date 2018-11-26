@@ -1,0 +1,47 @@
+<%@page import="org.springframework.web.servlet.support.RequestContextUtils,java.util.Locale" %>
+
+<%
+    Locale locale = RequestContextUtils.getLocale(request);
+%>
+<script>
+    if (top != self) {
+        top.location.href = self.location.href;
+    }
+</script>
+
+<script>
+    var PROCESSING = "<spring:message code='PROCESSING'/>";
+    var SERVER_ERROR = "<spring:message code='SERVER_ERROR'/>";
+    var SESSION_EXPIRED = "<spring:message code='SESSION_EXPIRED'/>";
+    var TITLE_DOCS = "<spring:message code='TITLE_DOCS'/>";
+    var TITLE_CONTACT = "<spring:message code='TITLE_CONTACT'/>";
+
+    var currentLang = "<%=locale.getLanguage()%>";
+    var userType = '<c:out value="${user.type}"/>';
+    CLIENTINFO = '<c:out value="${companyId}"/>';
+    var userId = '<c:out value="${user.loginId}"/>';
+    var _clientid = 0;
+    // when document loaded, assign some functionality
+    $(document).ready(function () {
+        // setup contact form validation object for FR lang
+        $.tools.validator.localize("default", {
+            "*": "<spring:message code='ERROR_INVALID_FIELD'/>",
+            ":email": "<spring:message code='ERROR_INVALID_EMAIL'/>",
+            ":number": "<spring:message code='ERROR_INVALID_NUMBER'/>",
+            ":url": "<spring:message code='ERROR_INVALID_URL'/>",
+            "[max]": "<spring:message code='ERROR_BEYOND_MAX'/>",
+            "[min]": "<spring:message code='ERROR_BELOW_MIN'/>",
+            "[required]": "<spring:message code='ERROR_FIELD_REQUIRED'/>"
+        });
+
+        //set number format locale
+        INT_FORMAT["locale"] = ( currentLang == "en" ) ? "us" : currentLang;
+        NUMBER_FORMAT["locale"] = ( currentLang == "en" ) ? "us" : currentLang;
+
+        // setup ajax error handler
+        $(document).ajaxError(handleAjaxError);
+
+        // call a method available on all pages to init that page properly
+        initPage();
+    });
+</script>

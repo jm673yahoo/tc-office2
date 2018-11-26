@@ -1,0 +1,344 @@
+body {
+    font-family: Verdana;
+    font-size: 62.5%;
+    background: #ffffff;
+    margin: 0;
+    /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+    padding: 0;
+    color: #000000;
+}
+
+p {
+    font-size: 1.05em;
+}
+
+td, select, input {
+    font-family: Verdana;
+    font-size: 1.05em;
+}
+
+select {
+    padding: 2px;
+    border: solid 1px #CCC;
+    border-radius: 5px;
+    -moz-border-radius: 5px; /* FF */
+    -webkit-border-radius: 5px; /* Chrome */
+}
+
+table tbody td {
+    padding: 4px;
+}
+
+li {
+    text-align: left;
+}
+
+h1 {
+    font-size: 2.0em;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.4em;
+}
+
+form {
+    margin-top: 0px;
+}
+
+label {
+    font-weight: bold;
+}
+
+a.forgotPwd {
+    display: block;
+    margin-top: 10px;
+    color: #000;
+    text-decoration: none;
+}
+
+a.forgotPwd:hover {
+    text-decoration: underline;
+}
+
+a.return2Login {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a.return2Login:hover {
+    text-decoration: underline;
+}
+
+a.loginInnerLink {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a.loginInnerLink:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+a.loginOuterLink {
+    color: #666666;
+    text-decoration: none;
+}
+
+a.loginOuterLink:hover {
+    color: #666666;
+    text-decoration: underline;
+}
+
+input[type="button"], input[type="submit"] {
+    height: 26px;
+    border: 1px solid #B3B3B3;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    background: #e6e6e6;
+    background: -moz-linear-gradient(top, #F2F2F2, #d3d3d3);
+    background: -o-linear-gradient(top, #F2F2F2, #d3d3d3);
+    background: -webkit-gradient(linear, left top, left bottom, from(#F2F2F2),
+    to(#d3d3d3)) no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F2F2F2',
+    endColorstr='#d3d3d3');
+    font-family: Verdana;
+    font-size: 12px;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+    background: #BABABA;
+    background: -moz-linear-gradient(top, #F2F2F2, #C7C7C7);
+    background: -o-linear-gradient(top, #F2F2F2, #C7C7C7);
+    background: -webkit-gradient(linear, left top, left bottom, from(#F2F2F2),
+    to(#C7C7C7)) no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F2F2F2',
+    endColorstr='#C7C7C7');
+}
+
+/*
+-----------------------------------------------------------
+Classes for the login/change password pages
+-----------------------------------------------------------
+*/
+.loginBody {
+
+}
+
+.invisibleLoginBox {
+    width: 900px;
+    height: 70px;
+    text-align: left;
+    vertical-align: middle;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    padding-top: 80px;
+}
+
+.invisibleLoginBoxBottom {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    background-color: #ccc;
+    margin: 0 auto;
+    padding-top: 20px;
+    color: #000;
+}
+
+.invisibleLoginBox2 {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #fff;
+}
+
+.invisibleUpperBox2 {
+    width: 100%;
+    height: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #fff;
+}
+
+.upperBarBox2 {
+    background-color: #77787b;
+}
+
+.innerUpperBox {
+    width: 900px;
+    color: #ffffff;
+    margin: 0 auto;
+}
+
+.westUpperBox {
+    width: 340px;
+    float: left;
+    color: #ffffff;
+    padding-top: 4px;
+}
+
+.eastUpperBox {
+    width: 560px;
+    float: left;
+    padding-top: 4px;
+    text-align: right;
+    color: #ffffff;
+}
+
+.lowerBarBox2 {
+    background-color: #ccc;
+    text-align: right;
+    heigth: 150px;
+}
+
+.lowerInvisibleLoginBox2 {
+    background-color: #375172;
+}
+
+.innerLoginBox {
+    width: 900px;
+    height: 350px;
+    margin: 0 auto;
+    color: #ffffff;
+}
+
+.innerSupportLoginBox {
+    width: 900px;
+    height: 40px;
+    margin: 0 auto;
+    color: #ffffff;
+}
+
+.loginHeader {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.westHeader {
+    width: 340px;
+    height: 35px;
+    float: left;
+}
+
+.eastHeader {
+    width: 360px;
+    height: 35px;
+    padding-top: 8px;
+    float: left;
+    text-align: right;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 5px;
+}
+
+.loginTextField {
+    width: 200px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.loginErrorField {
+    font-weight: bold;
+    color: #ff9999;
+}
+
+.westLoginBox {
+    width: 340px;
+    float: left;
+    text-align: left;
+}
+
+.eastLoginBox {
+    width: 400px;
+    float: right;
+    text-align: right;
+}
+
+.loginBtn {
+    width: 100px;
+    margin-right: 5px;
+}
+
+.nextBtn {
+    display: block;
+    width: 100px;
+    margin-top: 10px;
+}
+
+.topSupportBox {
+    width: 100%;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.westSupportBox {
+    width: 450px;
+    margin-top: 7px;
+    float: left;
+    text-align: right;
+}
+
+.eastSupportBox {
+    width: 250px;
+    margin-top: 7px;
+    float: left;
+    text-align: left;
+}
+
+.captchaBox {
+    height: 210px;
+}
+
+.changePwdLabel {
+    display: inline-block;
+    width: 135px;
+    text-align: right;
+}
+
+.passwordRecoveryBox {
+
+}
+
+form.pwdRecovery label {
+    display: block;
+    margin: 5px 0px;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.passwordSuccess {
+    font-size: 12px;
+}
+
+.forgotPwdStep2 {
+    height: 235px;
+}
+
+.forgotPwdStep3 {
+    height: 290px;
+}
+
+/* used by jquery tools tooltip */
+.tooltip {
+    background-color: #FFFFCC;
+    border: 1px solid #000;
+    padding: 10px 15px;
+    width: 200px;
+    display: none;
+    color: #000;
+    text-align: left;
+    font-size: 1.05em;
+    z-index: 6000;
+    /* outline radius for mozilla/firefox only */
+    -moz-box-shadow: 0 0 10px #000;
+    -webkit-box-shadow: 0 0 10px #000;
+}
